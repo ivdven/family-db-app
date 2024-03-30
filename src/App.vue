@@ -1,7 +1,21 @@
 <template>
-  <router-view/>
+  <div class="content">
+    <Navbar />
+    <router-view/>
+  </div>
 </template>
 
-<style>
+<script>
+  import Navbar from '@/components/Navbar.vue'
+  export default {
+    components: { Navbar }
+  }
+</script>
 
+<style>
+  .content {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 20px;
+  }
 </style>
