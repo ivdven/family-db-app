@@ -4,7 +4,7 @@
       <h1>Home</h1>
       <div class="links" v-if="user">
         <span>Hello, {{ user.displayName }}</span>
-        <router-link :to="{ name: 'DetailPage' }">My family data</router-link>
+        <!-- <router-link :to="{ name: 'DetailPage' }">My family data</router-link> -->
         <button @click="handleSubmit">Log out</button>
       </div>
       <div class="links" v-else>
@@ -16,8 +16,24 @@
 </template>
 
 <script>
+import getUser from '@/composables/getUser'
+import useLogout from '@/composables/useLogout'
+import { useRouter } from 'vue-router'
+
 export default {
-  
+  setup() {
+    const { user } = getUser()
+    const { error, isPending, logout } = useLogout()
+
+    const router = useRouter()
+
+    const handleSubmit = async () => {
+      await logout()
+      router.push({ name: 'Login' })
+    }
+
+    return { user, handleSubmit }
+  }
 }
 </script>
 
@@ -43,5 +59,8 @@ export default {
   nav .links .btn {
     margin-left: 1px;
     margin-right: 10px;
+  }
+  nav .links span {
+    margin-right: 15px;
   }
 </style>
