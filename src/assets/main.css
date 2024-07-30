@@ -42,7 +42,7 @@ button:disabled {
 }
 
 /* forms */
-form {
+form, .card {
   max-width: 400px;
   margin: 0 auto;
   padding: 30px;
@@ -51,7 +51,7 @@ form {
   border: 1px solid  var(--secondary);
   background: white;
 }
-input, textarea {
+input, textarea, p.styled-text {
   border: 0;
   border-bottom: 1px solid var(--secondary);
   padding: 10px;
@@ -60,6 +60,8 @@ input, textarea {
   width: 100%;
   box-sizing: border-box;
   margin: 20px auto;
+  font-size: 16px; /* Ensure the font-size is the same */
+  line-height: 1.5; /* Ensure the line-height is the same */
 }
 label {
   font-size: medium;
