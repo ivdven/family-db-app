@@ -4,7 +4,7 @@
       <h1>Home</h1>
       <div class="links" v-if="user">
         <span>Hello, {{ user.displayName }}</span>
-        <!-- <router-link :to="{ name: 'DetailPage' }">My family data</router-link> -->
+        <router-link class="btn" :to="{ name: 'Detail', params: { id: user.uid } }">My family data</router-link>
         <button @click="handleSubmit">Log out</button>
       </div>
       <div class="links" v-else>
@@ -29,10 +29,13 @@ export default {
 
     const handleSubmit = async () => {
       await logout()
+      if (!error.value) {
+        console.log('User logged out')
+      }
       router.push({ name: 'Login' })
     }
 
-    return { user, handleSubmit }
+    return { user, handleSubmit, error }
   }
 }
 </script>
