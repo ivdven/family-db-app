@@ -5,6 +5,7 @@
       <div class="links" v-if="user">
         <span>Hello, {{ user.displayName }}</span>
         <router-link class="btn" :to="{ name: 'Detail', params: { id: user.uid } }">My family data</router-link>
+        <router-link class="btn" :to="{ name: 'FamilyMembers' }">View other family's data</router-link>
         <button @click="handleSubmit">Log out</button>
       </div>
       <div class="links" v-else>
