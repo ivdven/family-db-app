@@ -13,7 +13,7 @@
       <p class="styled-text">{{ userData.phoneNumber }}</p>
       <label>Email</label>
       <p class="styled-text">{{ userData.email }}</p>
-      <div class="button-container">
+      <div v-if="isOwner" class="button-container">
         <button @click="edit">Edit info</button>
       </div>
     </div>
@@ -21,11 +21,16 @@
 </template>
 
 <script>
+import { watch, ref } from 'vue'
 export default {
   props: {
     userData: {
       type: Object,
       required: true
+    },
+    ownership: {
+      type: Boolean,
+      default: true
     }
   },
   setup(props, { emit }) {
@@ -33,7 +38,9 @@ export default {
       emit('edit')
     }
 
-    return { edit }
+    const isOwner = ref(props.ownership)
+
+    return { edit, isOwner }
   }
 }
 </script>

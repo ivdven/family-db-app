@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Login from '@/views/auth/Login.vue'
 import Signup from '@/views/auth/Signup.vue'
 import DetailView from '@/views/DetailView'
+import FamilyMembers from '@/views//FamilyMembersView'
 
 import { projectAuth } from '@/firebase/config'
 
@@ -52,6 +53,12 @@ const routes = [
     component: DetailView,
     beforeEnter: requireAuth,
     props: true
+  },
+  {
+    path: '/family-members',
+    name: 'FamilyMembers',
+    component: FamilyMembers,
+    beforeEnter: requireAuth,
   }
 ]
 

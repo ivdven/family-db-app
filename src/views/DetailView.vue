@@ -12,6 +12,13 @@
         @cancel="handleToggle"
       />
     </div>
+    <div v-else>
+      <DetailCard v-if="userData"
+        :userData="userData"
+        :ownership="ownership"
+      />
+    </div>
+    <div v-if="error" class="error">{{ error }}</div>
   </div>
 </template>
 
@@ -57,8 +64,13 @@ export default {
     watch([user, userData], () => {
       console.log('Checking ownership')
       if (userData.value && user.value) {
-        console.log('Ownership check: User UID:', user.value.uid, 'Document owner UID:', userData.value.userId)
-        ownership.value = user.value.uid === userData.value.userId
+        if (user.value.uid === userData.value.userId) {
+          console.log('Ownership check: User UID:', user.value.uid, 'Document owner UID:', userData.value.userId)
+          ownership.value = true
+        }
+        if (user.value.uid !== userData.value.userId) {
+          ownership.value = false
+        }
       } else {
         console.log('User data or user is not available for ownership check')
         ownership.value = false
