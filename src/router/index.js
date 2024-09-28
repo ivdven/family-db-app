@@ -4,6 +4,7 @@ import Login from '@/views/auth/Login.vue'
 import Signup from '@/views/auth/Signup.vue'
 import DetailView from '@/views/DetailView'
 import FamilyMembers from '@/views//FamilyMembersView'
+import CreatePost from '@/views/blog/CreatePostView'
 
 import { projectAuth } from '@/firebase/config'
 
@@ -58,6 +59,12 @@ const routes = [
     path: '/family-members',
     name: 'FamilyMembers',
     component: FamilyMembers,
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/create-post',
+    name: 'CreatePost',
+    component: CreatePost,
     beforeEnter: requireAuth,
   }
 ]
