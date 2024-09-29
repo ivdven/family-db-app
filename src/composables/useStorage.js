@@ -11,7 +11,9 @@ const useStorage = () => {
   const filePath = ref(null)
 
   const uploadImage = async (file, path) => {
-    filePath.value = `${path}/${user.value.uid}/${file.name}`
+    
+    const uniqueFileName = `${file.name}-${Math.floor(new Date().valueOf() * Math.random() * 1000)}`
+    filePath.value = `${path}/${user.value.uid}/${uniqueFileName}`
     const storageRef = projectStorage.ref(filePath.value)
 
     try {
