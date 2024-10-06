@@ -4,13 +4,14 @@ import 'firebase/compat/auth'
 import 'firebase/compat/storage'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA_wX0HNTsC__sRyDkt_3R0a-1AXg23KCk",
-  authDomain: "family-db-app.firebaseapp.com",
-  projectId: "family-db-app",
-  storageBucket: "family-db-app.appspot.com",
-  messagingSenderId: "896289593208",
-  appId: "1:896289593208:web:1d04013a1893f426f05a8d"
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_FIREBASE_APP_ID,
 };
+
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
